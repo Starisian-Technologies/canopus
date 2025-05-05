@@ -25,6 +25,11 @@ On every frontend page load, Canopus checks:
 1. If the request is for the admin, AJAX, or CLI—if so, it skips redirection.
 2. If the current host does **not** match the defined canonical host, it performs a 301 redirect to the canonical domain, **preserving the full request URI**.
 
+### Example
+
+A user visiting `cellularvibrations.com` will be redirected to:
+`https://vibe.sparxstar.com/same-page-path` using a 301 redirect.
+
 ---
 
 ## Installation
