@@ -52,13 +52,13 @@ class Redirector {
     // Map of alias domains to their canonical counterparts
     // NOTE: Edit the domains below!!
     $canonical_map = [
-        'barbarabarrett.org' => 'barbarabarrett.sparxstar.com',
-        'casanovaandrosetta.com' => 'casanovaandrosetta.sparxstar.com',
-        'aiwestafrica.com' => 'aiwa.sparxstar.com',
-        'contribute.aiwestafrica.com' => 'contribute.sparxstar.com',
-        'mandinka.aiwestafrica.com' => 'mandinka.sparxstar.com',
-        'muhammeddibbasey.cellularvibrations.com' => 'md.sparxstar.com',
-        'cellularvibrations.com' => 'vibe.sparxstar.com',
+      'barbarabarrett.sparxstar.com'              => 'barbarabarrett.org',
+      'casanovaandrosetta.sparxstar.com'          => 'casanovaandrosetta.com',
+      'aiwa.sparxstar.com'                        => 'aiwestafrica.com',
+      'contribute.sparxstar.com'                  => 'contribute.aiwestafrica.com',
+      'mandinka.sparxstar.com'                    => 'mandinka.aiwestafrica.com',
+      'md.sparxstar.com'                          => 'muhammeddibbasey.cellularvibrations.com',
+      'vibe.sparxstar.com'                        => 'cellularvibrations.com',
     ];
 
     // Get current domain
