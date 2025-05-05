@@ -1,0 +1,11 @@
+{
+  "name": "starisian/canopus-canonical-name-redirector",
+  "description": "Canonical domain redirector for WordPress multisite.",
+  "type": "wordpress-muplugin",
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "Starisian\\Canopus\\": "src/"
+    }
+  }
+}
