@@ -44,35 +44,34 @@ class Redirector {
    * if so, performs a 301 redirect to the canonical domain.
    * Admin, CLI, and AJAX requests are explicitly excluded.
    */
-  public static function enforce() {
-    if (is_admin() || php_sapi_name() === 'cli' || (defined('DOING_AJAX') && DOING_AJAX)) {
-        return;
-    }
-    
-    // Map of alias domains to their canonical counterparts
-    // NOTE: Edit the domains below!!
-    $canonical_map = [
-      'barbarabarrett.sparxstar.com'              => 'barbarabarrett.org',
-      'casanovaandrosetta.sparxstar.com'          => 'casanovaandrosetta.com',
-      'aiwa.sparxstar.com'                        => 'aiwestafrica.com',
-      'contribute.sparxstar.com'                  => 'contribute.aiwestafrica.com',
-      'mandinka.sparxstar.com'                    => 'mandinka.aiwestafrica.com',
-      'md.sparxstar.com'                          => 'muhammeddibbasey.cellularvibrations.com',
-      'vibe.sparxstar.com'                        => 'cellularvibrations.com',
-    ];
+   public static function enforce()
+    {
+        if (is_admin() || php_sapi_name() === 'cli' || (defined('DOING_AJAX') && DOING_AJAX)) {
+            return;
+        }
 
-    // Get current domain
-    $current_host = $_SERVER['HTTP_HOST'] ?? '';
-    $canonical_host = $canonical_map[$current_host] ?? '';
-
-    // Redirect to canonical domain if needed
-    if ($canonical_host && $current_host !== $canonical_host) {
-        $scheme = is_ssl() ? 'https' : 'http';
-        $uri = $_SERVER['REQUEST_URI'];
-        wp_redirect("{$scheme}://{$canonical_host}{$uri}", 301);
-        exit;
+        // Only redirect internal subdomains TO public domains (not the reverse)
+        // Map of alias domains to their canonical counterparts
+        // NOTE: Edit the domains below!!
+        $redirect_map = [
+            'vibe.sparxstar.com'                     => 'cellularvibrations.com',
+            'md.sparxstar.com'                        => 'muhammeddibbasey.cellularvibrations.com',
+            'aiwa.sparxstar.com'                      => 'aiwestafrica.com',
+            'contribute.sparxstar.com'                => 'contribute.aiwestafrica.com',
+            'mandinka.sparxstar.com'                  => 'mandinka.aiwestafrica.com',
+            'barbarabarrett.sparxstar.com'            => 'barbarabarrett.org',
+            'casanovaandrosetta.sparxstar.com'        => 'casanovaandrosetta.com',
+        ];
+      
+        // Redirect to canonical domain if needed
+        $current_host = $_SERVER['HTTP_HOST'] ?? '';
+        if (isset($redirect_map[$current_host])) {
+            $scheme = is_ssl() ? 'https' : 'http';
+            $uri = $_SERVER['REQUEST_URI'];
+            wp_redirect("{$scheme}://{$redirect_map[$current_host]}{$uri}", 301);
+            exit;
+        }
     }
-  }
 }
 
 
