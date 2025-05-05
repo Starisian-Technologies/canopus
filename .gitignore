@@ -46,3 +46,23 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+
+# Include MU plugins
+!/wp-content/mu-plugins/
+!/wp-content/mu-plugins/canopus-canonical-name-redirector/
+!/wp-content/mu-plugins/canopus-canonical-name-redirector/**
+
+# Allow Composer files
+!composer.json
+!composer.lock
+
+# Allow GitHub workflows
+!.github/
+!.github/workflows/
+
+# Ignore Composer's vendor directory (unless you want to commit it)
+vendor/
+
+# Ignore PHPUnit cache if you use it later
+.phpunit.result.cache
+
