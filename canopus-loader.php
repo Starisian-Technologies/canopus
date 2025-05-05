@@ -23,5 +23,6 @@ require_once __DIR__ . '/src/Redirector.php';
 
 use Starisian\Canopus\Redirector;
 
-// runtime hook
+// Hook the 'enforce' method of the Redirector class to WordPress's 'template_redirect' action.
+// This runs before the template is loaded, only on the front-end (not admin, AJAX, or CLI).
 add_action('template_redirect', [Redirector::class, 'enforce']);
