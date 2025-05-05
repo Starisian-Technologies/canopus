@@ -74,6 +74,5 @@ class Redirector {
     }
   }
 }
-// Hook the 'enforce' method of the Redirector class to WordPress's 'template_redirect' action.
-// This runs before the template is loaded, only on the front-end (not admin, AJAX, or CLI).
-add_action('template_redirect', ['Redirector', 'enforce']);
+
+
